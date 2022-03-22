@@ -30,8 +30,11 @@ joan = {
 
 print(pd.DataFrame(joan))
 
-# sma_data = pd.read_csv("https://raw.githubusercontent.com/dphi-official/Datasets/master/Standard_Metropolitan_Areas_Data-data.csv")
-# print(sma_data.dtypes)
+sma_data = pd.read_csv("https://raw.githubusercontent.com/dphi-official/Datasets/master/Standard_Metropolitan_Areas_Data-data.csv")
+
+# print(sma_data.loc[[1, 3, 5, 7, 9, 13],['land_area', 'work_force', 'income', 'region', 'crime_rate']])/
+
+print(sma_data[sma_data.region == 2])
 
 # CSV files known as Comma-separated value can be read using read_csv that turns csv file to a dataframe
 # a=pd.read_csv('transactions.csv')
