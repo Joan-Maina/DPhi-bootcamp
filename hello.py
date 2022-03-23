@@ -1,6 +1,9 @@
 #  PANDAS(Python Data Analysis Library)
 # Allows analysis, manipulation and exploring of large data with ease.
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
 # Pandas has several objects Series: a one-dimensional labelled array
 
 l = [1,1,2,3,5,8,13]
@@ -63,3 +66,91 @@ print(sma_data[sma_data.region == 2])
 # is used to give details of the data
 # print(a.info())
 
+
+
+
+#DAY 3
+
+# SUMMARY AND AGGEREGATE FUNCTIONS
+#1. DESCRIBE() gives a summary of numerical columns or the specified columns
+# print(sma_data['crime_rate'].describe())
+
+# the columns with two or more words can be done as shown above
+# print(sma_data.describe())
+
+#Aggregate functions
+# these are specific methods to get specific values
+#mean() to get mean of columns
+# print(sma_data.mean())
+
+#unique() to get unique values of a specified columns
+# print(sma_data.region.value_counts())
+
+#value_counts() helps get the nmber of values with the each unique value
+
+# print(sma_data.crime_rate.value_counts())
+
+#SORTING
+# This is a technique used to arrange values in ascending values in default or descending if ascending is set to false
+# the last part chooses the number of the first values
+# print(sma_data.sort_values(by = 'crime_rate', ascending=False)[:5])
+
+
+#RENAMING helps change the names of columns
+# print(sma_data.rename(columns = {'physicians': 'num_physicians'}))
+
+#MISSING VALUES can be detected using isnull() or isna() and can be filled with fillna()
+print(sma_data.isna().sum())
+
+
+
+#DAY 4
+
+ 
+ # create scatter plot and display
+# plt.scatter(sma_data.crime_rate,sma_data.percent_senior)
+
+# create a line plot 
+# plt.plot(sma_data.work_force,sma_data.income)
+
+#create a histogram
+# plt.hist(sma_data.percent_senior)
+
+#create a bar plot
+# plt.bar(sma_data.region, sma_data.crime_rate)
+# or a horizontal bar plot
+# plt.barh(sma_data.region, sma_data.crime_rate)
+
+# pie charts
+# firms = ["firm A","firm B","firm C","firm D","firm E"]
+# market_share = [20,25,15,10,20]
+
+# Explode = [0,0.1,0,0,0]
+# plt.pie(market_share, explode=Explode,labels=firms, autopct='%1.1f%%')
+
+
+
+
+#DAY 5
+# two line graphs can be combined
+# plt.plot(sma_data.work_force, sma_data.income, color="r", label='graph 1')
+# plt.plot(sma_data.physicians, sma_data.income,label='graph 2', linestyle='dashed')
+
+# more descriptions can be given
+# plt.title('Joan')
+# plt.xlabel('x-axis')
+# plt.ylabel('y axis')
+# plt.legend()
+# plt.show()
+
+
+# several plots can be made together and displayed in a number of ways
+plt.subplot(1,2,1)
+plt.plot(sma_data.work_force, sma_data.income,"go")
+plt.title("Income vs work force")
+
+plt.subplot(1,2,2, sharey=True)
+plt.plot(sma_data.hospital_beds, sma_data.income,"rx")
+plt.title("Income vs hospital beds")
+plt.suptitle("sub plots")
+plt.show()
