@@ -1,8 +1,10 @@
 #  PANDAS(Python Data Analysis Library)
 # Allows analysis, manipulation and exploring of large data with ease.
+from locale import normalize
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn.model_selection import train_test_split
 
 # Pandas has several objects Series: a one-dimensional labelled array
 
@@ -37,7 +39,7 @@ sma_data = pd.read_csv("https://raw.githubusercontent.com/dphi-official/Datasets
 
 # print(sma_data.loc[[1, 3, 5, 7, 9, 13],['land_area', 'work_force', 'income', 'region', 'crime_rate']])/
 
-print(sma_data[sma_data.region == 2])
+# print(sma_data[sma_data.region == 2])
 
 # CSV files known as Comma-separated value can be read using read_csv that turns csv file to a dataframe
 # a=pd.read_csv('transactions.csv')
@@ -100,7 +102,7 @@ print(sma_data[sma_data.region == 2])
 # print(sma_data.rename(columns = {'physicians': 'num_physicians'}))
 
 #MISSING VALUES can be detected using isnull() or isna() and can be filled with fillna()
-print(sma_data.isna().sum())
+# print(sma_data.isna().sum())
 
 
 
@@ -145,12 +147,25 @@ print(sma_data.isna().sum())
 
 
 # several plots can be made together and displayed in a number of ways
-plt.subplot(1,2,1)
-plt.plot(sma_data.work_force, sma_data.income,"go")
-plt.title("Income vs work force")
+# plt.subplot(1,2,1)
+# plt.plot(sma_data.work_force, sma_data.income,"go")
+# plt.title("Income vs work force")
 
-plt.subplot(1,2,2, sharey=True)
-plt.plot(sma_data.hospital_beds, sma_data.income,"rx")
-plt.title("Income vs hospital beds")
-plt.suptitle("sub plots")
-plt.show()
+# plt.subplot(1,2,2, sharey=True)
+# plt.plot(sma_data.hospital_beds, sma_data.income,"rx")
+# plt.title("Income vs hospital beds")
+# plt.suptitle("sub plots")
+# plt.show()
+
+
+# DAY6
+# DATA PRE-PROCESSING
+titanic_data = pd.read_csv("https://raw.githubusercontent.com/dphi-official/Datasets/master/titanic_data.csv")
+
+# median = titanic_data.isna()
+print(sma_data.isna().sum())
+
+x_train, x_test, ye_train, y_test = train_test_split(sma_data, test_size=0.20)
+
+# x_train = normalize(x_train)
+# x_test = normalize(x_test)
