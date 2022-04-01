@@ -8,37 +8,39 @@ from sklearn.model_selection import train_test_split
 
 # Pandas has several objects Series: a one-dimensional labelled array
 
-l = [1,1,2,3,5,8,13]
-print(pd.Series(l))
+# l = [1,1,2,3,5,8,13]
+# print(pd.Series(l))
 
-# you can create your own series using dictionary
-j = {'one' : 1, 'two' : 2, 'three':3}
-print(pd.Series(j))
+# # you can create your own series using dictionary
+# j = {'one' : 1, 'two' : 2, 'three':3}
+# print(pd.Series(j))
 
 # python list, you can also use numpy array to create a dataFrame
-data = [[1000,'joan',90],
-[2000,'wanini',100],
-[3000,'maina',100]]
-print(pd.DataFrame(data))
+# data = [[1000,'joan',90],
+# [2000,'wanini',100],
+# [3000,'maina',100]]
+# print(pd.DataFrame(data))
 
 # you can define the columns 
-print(pd.DataFrame(data,columns=['Regd. No','Name','Marks%'],index=[1,2,3]))
+# print(pd.DataFrame(data,columns=['Regd. No','Name','Marks%'],index=[1,2,3]))
 
 # creating using dictionary
-joan = {
-        'numbers':[2,7,12],
-    'names':['joan','wanini','maina'],
-    'dreams':['be an awesome senior developer','be a good reader','be an excellent communicator']
-}
+# joan = {
+#         'numbers':[2,7,12],
+#     'names':['joan','wanini','maina'],
+#     'dreams':['be an awesome senior developer','be a good reader','be an excellent communicator']
+# }
 
 
 
-print(pd.DataFrame(joan))
+# print(pd.DataFrame(joan))
 
 sma_data = pd.read_csv("https://raw.githubusercontent.com/dphi-official/Datasets/master/Standard_Metropolitan_Areas_Data-data.csv")
 
-# print(sma_data.loc[[1, 3, 5, 7, 9, 13],['land_area', 'work_force', 'income', 'region', 'crime_rate']])/
 
+# print(sma_data.loc[[1, 3, 5, 7, 9, 13],['land_area', 'work_force', 'income', 'region', 'crime_rate']])
+# print(sma_data.loc[(sma_data['region'] == 4) & (sma_data['crime_rate'] == 55.64)])
+# print(sma_data)
 # print(sma_data[sma_data.region == 2])
 
 # CSV files known as Comma-separated value can be read using read_csv that turns csv file to a dataframe
@@ -90,7 +92,7 @@ sma_data = pd.read_csv("https://raw.githubusercontent.com/dphi-official/Datasets
 
 #value_counts() helps get the nmber of values with the each unique value
 
-# print(sma_data.crime_rate.value_counts())
+# print(sma_data.land_area.value_counts())
 
 #SORTING
 # This is a technique used to arrange values in ascending values in default or descending if ascending is set to false
@@ -113,13 +115,22 @@ sma_data = pd.read_csv("https://raw.githubusercontent.com/dphi-official/Datasets
 # plt.scatter(sma_data.crime_rate,sma_data.percent_senior)
 
 # create a line plot 
-# plt.plot(sma_data.work_force,sma_data.income)
+# plt.plot(sma_data.land_area,sma_data.crime_rate)
+# plt.xlabel('x-axis')
+# plt.ylabel('y axis')
+# plt.legend()
+# plt.show()
 
 #create a histogram
-# plt.hist(sma_data.percent_senior)
+# plt.hist(sma_data.region)
+# plt.show()
+
+#create a correlation matrix
+# print(sma_data.corr())
 
 #create a bar plot
-# plt.bar(sma_data.region, sma_data.crime_rate)
+plt.hist(sma_data.income)
+plt.show()
 # or a horizontal bar plot
 # plt.barh(sma_data.region, sma_data.crime_rate)
 
@@ -140,9 +151,7 @@ sma_data = pd.read_csv("https://raw.githubusercontent.com/dphi-official/Datasets
 
 # more descriptions can be given
 # plt.title('Joan')
-# plt.xlabel('x-axis')
-# plt.ylabel('y axis')
-# plt.legend()
+
 # plt.show()
 
 
@@ -160,12 +169,12 @@ sma_data = pd.read_csv("https://raw.githubusercontent.com/dphi-official/Datasets
 
 # DAY6
 # DATA PRE-PROCESSING
-titanic_data = pd.read_csv("https://raw.githubusercontent.com/dphi-official/Datasets/master/titanic_data.csv")
+# titanic_data = pd.read_csv("https://raw.githubusercontent.com/dphi-official/Datasets/master/titanic_data.csv")
 
 # median = titanic_data.isna()
-print(sma_data.isna().sum())
+# print(sma_data.isna().sum())
 
-x_train, x_test, ye_train, y_test = train_test_split(sma_data, test_size=0.20)
+# x_train, x_test, ye_train, y_test = train_test_split(sma_data, test_size=0.20)
 
 # x_train = normalize(x_train)
 # x_test = normalize(x_test)
